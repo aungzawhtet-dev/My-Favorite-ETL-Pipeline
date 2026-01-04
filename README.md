@@ -3,3 +3,42 @@ This is my favorite data pipeline, an Apache Airflow–orchestrated ETL pipeline
 
 I particularly like this pipeline because it demonstrates practical data engineering fundamentals: working with NoSQL to relational data, schema alignment, anonymized and reusable design, and production-ready practices such as environment variables, idempotent table creation, and clear DAG structure. It reflects how I approach building maintainable, readable pipelines that can be extended with incremental loading, monitoring, and scaling when needed.
 
+
+┌────────────┐
+│  MongoDB   │
+│ (NoSQL)    │
+└─────┬──────┘
+      │
+      │  Extract (logical date window)
+      ▼
+┌────────────┐
+│   Airflow  │
+│   DAG      │
+│────────────│
+│ 1. Extract │
+│ 2. Transform
+│ 3. Load    │
+└─────┬──────┘
+      │
+      │  Staging (run_id isolated)
+      ▼
+┌────────────────────┐
+│ PostgreSQL         │
+│ staging schema     │
+│ (raw JSONB)        │
+└─────┬──────────────┘
+      │
+      │  Upsert
+      ▼
+┌────────────────────┐
+│ PostgreSQL         │
+│ final mart         │
+│ (normalized table) │
+└─────┬──────────────┘
+      │
+      │
+      ├──▶ Soda Data Quality Checks
+      │
+      └──▶ Row Count Reconciliation
+
+
