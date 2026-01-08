@@ -366,7 +366,7 @@ def run_soda_quality_check(**context):
     # Airflow provides: A logging framework/ Per-task log files/ Log persistence (UI, file, remote logs).
     # Airflow does NOT do: It does not 1.log what the Python function is doing/ 2.subprocess stdout & stderr automatically/ 3.not interpret success/failure context for you.
     # must still emit logs by using logging.
-    # Data Quality Test : data freshness, valid data type, regex check, unique, and not missing fields check.
+    # Data Quality Test : data freshness, valid data type, regex check, unique, and not missing fields value check.
 
 
 #---------------------------------------
@@ -477,6 +477,7 @@ with DAG(
     
     
     check_conn >> extract_task >> transform >> load >> soda_quality_check >> row_count_check
+
 
 
 
