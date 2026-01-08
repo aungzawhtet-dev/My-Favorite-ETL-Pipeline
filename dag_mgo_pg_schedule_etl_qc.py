@@ -466,7 +466,7 @@ with DAG(
     soda_quality_check = PythonOperator(
     task_id="soda_quality_check",
     python_callable=run_soda_quality_check,  
-    provide_context=True   # if you need Airflow context
+    provide_context=True   # if we need Airflow context
     )
     
     row_count_check = PythonOperator(
@@ -477,6 +477,7 @@ with DAG(
     
     
     check_conn >> extract_task >> transform >> load >> soda_quality_check >> row_count_check
+
 
 
 
