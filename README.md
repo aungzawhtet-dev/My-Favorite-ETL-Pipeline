@@ -1,4 +1,4 @@
-# My-Favorite-Scripts [dag_mgo_pg_schedule_etl_qc.py]
+# My-Favorite-ETL-Pipeline [dag_mgo_pg_schedule_etl_qc.py]
 
 This repository showcases a production-oriented ETL pipeline orchestrated with Apache Airflow, extracting data from MongoDB, transforming it with Pandas, and loading it into PostgreSQL. Among them, "dag_mgo_pg_schedule_etl_qc.py" is one of my favourite pipeline scripts with data quality checks and reconciliation. I particularly like this pipeline because it demonstrates practical data engineering fundamentals: working with NoSQL to relational data, schema alignment, anonymized and reusable design, and production-ready practices such as environment variables, idempotent table creation, and clear DAG structure. It reflects how I approach building maintainable, readable pipelines that can be extended with incremental loading, monitoring, and scaling when needed.
 
